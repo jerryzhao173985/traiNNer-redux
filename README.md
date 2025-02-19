@@ -1,3 +1,93 @@
+## Recent Improvements
+
+### Enhanced Inference and Model Comparison
+
+The repository now includes improved inference capabilities and model comparison tools:
+
+#### Inference Improvements (`inference.py`)
+- Added support for multiple model architectures:
+  - RCAN (Residual Channel Attention Network)
+  - RealPLKSR (Real-world Partial Large Kernel SR)
+  - ArtCNN (with configurations R8F48, R8F64, R16F96)
+  - Compact (VGG-style network with efficient design)
+- Optimized memory handling with tiling for large images
+- Automatic device selection (CUDA, MPS, CPU) with fallback options
+- Smooth tile blending with configurable overlap
+- Support for both safetensors and PyTorch model formats
+
+Usage:
+```bash
+# Basic usage
+python inference.py --model pretrained_model/model_name.safetensors --input input.png --output output.png
+
+# Advanced usage with tiling options
+python inference.py --model pretrained_model/model_name.safetensors --input input.png --output output.png --tile_size 512 --overlap 32 --device mps
+```
+
+#### Model Comparison Tool (`compare_models.py`)
+- Comprehensive model comparison with multiple metrics:
+  - PSNR (Peak Signal-to-Noise Ratio)
+  - SSIM (Structural Similarity Index)
+  - LPIPS (Learned Perceptual Image Patch Similarity)
+  - Sharpness ratio
+- Automatic processing with all available models
+- Detailed JSON reports and human-readable summaries
+- Visual comparison of results
+- Model performance ranking
+
+Usage:
+```bash
+# Compare all models in the pretrained_model directory
+python compare_models.py --input image.png --models_dir ./pretrained_model --output_dir ./results
+
+# Specify device explicitly
+python compare_models.py --input image.png --models_dir ./pretrained_model --output_dir ./results --device mps
+```
+
+The comparison tool generates:
+- Upscaled images from each model
+- Detailed metrics in JSON format
+- Human-readable summary with model rankings
+- Top 3 models comparison with scores
+
+Results are saved in a timestamped directory under the specified output directory, containing:
+- Upscaled images from each model
+- `comparison_report.json` with detailed metrics
+- `summary.txt` with human-readable results
+
+### Hardware Support
+- NVIDIA GPUs (CUDA)
+- Apple Silicon (MPS)
+- AMD GPUs (ROCm on Linux)
+- CPU fallback for all platforms
+
+These improvements make it easier to:
+1. Process images with multiple state-of-the-art models
+2. Compare model performance objectively
+3. Choose the best model for specific use cases
+4. Handle large images efficiently
+5. Utilize available hardware acceleration
+
+The result is: (on the image that previously been processed by hugging face space upscaler)
+
+Top 3 Models:
+1. 2x_DF2K_ArtCNN_R8F48_450k
+   Score: 0.9493
+   PSNR: 42.26
+   SSIM: 0.9948
+   LPIPS: 0.0135
+2. 2x_DF2K_ArtCNN_R8F64_450k
+   Score: 0.9493
+   PSNR: 42.26
+   SSIM: 0.9948
+   LPIPS: 0.0135
+3. 2x_DF2K_Redux_Compact_450k
+   Score: 0.9490
+   PSNR: 42.23
+   SSIM: 0.9947
+   LPIPS: 0.0137
+
+
 # traiNNer-redux
 ![redux3](https://github.com/user-attachments/assets/d107b2fc-6b68-4d3e-b08d-82c8231796cb)
 

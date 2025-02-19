@@ -152,3 +152,106 @@ venv.bak/
 .mypy_cache/
 /onnx
 /tb_logger_df2k
+
+# Results and output directories
+results/
+result/
+result*/
+results*/
+output/
+outputs/
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.ico
+*.heic
+
+# Model files
+*.pth
+*.pt
+*.safetensors
+*.onnx
+pretrained_model/*
+!pretrained_model/.gitkeep
+
+# Datasets
+datasets/
+dataset/
+data/
+*.zip
+*.tar
+*.tar.gz
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
+.venv
+.python-version
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+.vs/
+*.sublime-workspace
+*.sublime-project
+
+# Logs and databases
+*.log
+*.sqlite
+*.db
+wandb/
+runs/
+tb_logger/
+*.csv
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Keep specific directories but ignore their contents
+!results/.gitkeep
+!datasets/.gitkeep
