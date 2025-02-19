@@ -177,7 +177,7 @@ outputs/
 *.pt
 *.safetensors
 *.onnx
-pretrained_model/*
+# pretrained_model/*
 !pretrained_model/.gitkeep
 
 # Datasets
