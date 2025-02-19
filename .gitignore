@@ -175,8 +175,8 @@ outputs/
 # Model files
 *.pth
 *.pt
-*.safetensors
-*.onnx
+# *.safetensors
+# *.onnx
 # pretrained_model/*
 !pretrained_model/.gitkeep
 
